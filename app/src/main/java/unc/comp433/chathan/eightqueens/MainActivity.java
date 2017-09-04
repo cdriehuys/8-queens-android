@@ -34,8 +34,6 @@ public class MainActivity extends AppCompatActivity {
         for (int row = 0; row < 8; row++) {
             for (int col = 0; col < 8; col++) {
                 Button cell = new Button(getApplicationContext());
-                cell.setHeight(buttonSize);
-                cell.setWidth(buttonSize);
 
                 if ((row + col) % 2 == 0) {
                     cell.setBackgroundColor(DARK_SQUARE);
