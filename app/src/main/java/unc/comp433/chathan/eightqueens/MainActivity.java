@@ -1,8 +1,10 @@
 package unc.comp433.chathan.eightqueens;
 
+import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Point;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,6 +33,46 @@ public class MainActivity extends AppCompatActivity {
 
         createBoard();
         drawBoard();
+    }
+
+    /**
+     * Handle a click event for the reset button.
+     *
+     * @param view The view that was clicked.
+     */
+    public void handleResetClick(View view) {
+        resetGame();
+    }
+
+    /**
+     * Show an alert informing the user they won the game.
+     */
+    private void alertWin() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        // Set text content for alert
+        builder.setTitle(R.string.congratulations)
+                .setMessage(R.string.win_message);
+
+        // Add button to reset board
+        builder.setPositiveButton(R.string.reset, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                resetGame();
+            }
+        });
+
+        // Add button to close dialog without resetting the board
+        builder.setNegativeButton(R.string.close, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+
+        // Show the dialog
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     /**
@@ -108,6 +150,18 @@ public class MainActivity extends AppCompatActivity {
      */
     private void makeMove(int col, int row) {
         game.toggleQueen(col, row);
+        drawBoard();
+
+        if (game.isWon()) {
+            alertWin();
+        }
+    }
+
+    /**
+     * Reset the game.
+     */
+    private void resetGame() {
+        game = new Game();
         drawBoard();
     }
 
