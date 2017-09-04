@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">EightQueens</string>
+    <string name="no_message">(No Message)</string>
 </resources>

@@ -1,17 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="unc.comp433.chathan.eightqueens.MainActivity">
+    android:layout_width="match_parent">
 
-    <GridLayout
-        android:id="@+id/chess_grid_layout"
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:columnCount="8"
-        android:rowCount="8">
-    </GridLayout>
+        android:orientation="vertical"
+        tools:context="unc.comp433.chathan.eightqueens.MainActivity">
 
-</LinearLayout>
+        <GridLayout
+            android:id="@+id/chess_grid_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="8"
+            android:rowCount="8">
+        </GridLayout>
+
+        <TextView
+            android:background="@android:color/darker_gray"
+            android:gravity="center"
+            android:id="@+id/game_error_tv"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:padding="16dp" />
+
+    </LinearLayout>
+</ScrollView>

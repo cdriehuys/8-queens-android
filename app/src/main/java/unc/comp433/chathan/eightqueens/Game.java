@@ -6,9 +6,10 @@ import android.graphics.Point;
 import java.util.Arrays;
 import java.util.Locale;
 
-public class Game {
-    public static final int BOARD_SIZE = 8;
-    public static final int NUM_QUEENS = 8;
+class Game {
+    static final int BOARD_SIZE = 8;
+
+    private static final int NUM_QUEENS = 8;
 
     private boolean[][] queens;
 
@@ -17,7 +18,7 @@ public class Game {
     /**
      * Create a new 8-Queens game.
      */
-    public Game() {
+    Game() {
         queens = new boolean[BOARD_SIZE][BOARD_SIZE];
         for (boolean[] row: queens) {
             Arrays.fill(row, false);
@@ -31,7 +32,7 @@ public class Game {
      *
      * @return The error message from the previous move. May be null.
      */
-    public String getErrorMessage() {
+    String getErrorMessage() {
         return errorMessage;
     }
 
@@ -43,7 +44,7 @@ public class Game {
      *
      * @return True if there is a queen at the given location and false otherwise.
      */
-    public boolean getQueenAt(int col, int row) {
+    boolean getQueenAt(int col, int row) {
         return queens[col][row];
     }
 
@@ -74,7 +75,7 @@ public class Game {
      * @param col The column where the cell is located.
      * @param row The row where the cell is located.
      */
-    public void toggleQueen(int col, int row) {
+    void toggleQueen(int col, int row) {
         // If there was already a queen in that square, we simply remove it
         if (queens[col][row]) {
             queens[col][row] = false;

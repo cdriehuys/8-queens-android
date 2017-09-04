@@ -1,5 +1,6 @@
 package unc.comp433.chathan.eightqueens;
 
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.view.Display;
 import android.view.View;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private static final int DARK_SQUARE = Color.parseColor("#755000");
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         game = new Game();
 
         createBoard();
+        drawBoard();
     }
 
     /**
@@ -79,6 +82,21 @@ public class MainActivity extends AppCompatActivity {
             for (int col = 0; col < Game.BOARD_SIZE; col++) {
                 boardSquares[col][row].setQueenVisible(game.getQueenAt(col, row));
             }
+        }
+
+        // Retrieve the game's current error message, if any.
+        TextView errorMessageTV = (TextView) findViewById(R.id.game_error_tv);
+        String errorMessage = game.getErrorMessage();
+
+        Resources res = getResources();
+
+        // Render error messages in red and the default text in gray.
+        if (errorMessage != null) {
+            errorMessageTV.setText(errorMessage);
+            errorMessageTV.setTextColor(res.getColor(android.R.color.holo_red_dark));
+        } else {
+            errorMessageTV.setText(res.getString(R.string.no_message));
+            errorMessageTV.setTextColor(Color.parseColor("#777777"));
         }
     }
 

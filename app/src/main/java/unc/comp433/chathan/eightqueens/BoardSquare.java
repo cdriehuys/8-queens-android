@@ -7,8 +7,6 @@ import android.content.Context;
  * A class representing a single square on a chess board.
  */
 public class BoardSquare extends android.support.v7.widget.AppCompatImageButton {
-    private static final String TAG = BoardSquare.class.getSimpleName();
-
     private int column;
     private int row;
 
