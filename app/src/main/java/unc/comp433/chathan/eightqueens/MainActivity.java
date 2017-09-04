@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
 
     private BoardSquare[][] boardSquares;
 
+    private boolean gamePlayable;
+
     private Game game;
 
     @Override
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         game = new Game();
+        gamePlayable = true;
 
         createBoard();
         drawBoard();
@@ -147,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (game.isWon()) {
             alertWin();
+            gamePlayable = false;
         }
     }
 
@@ -155,6 +159,8 @@ public class MainActivity extends AppCompatActivity {
      */
     private void resetGame() {
         game = new Game();
+        gamePlayable = true;
+
         drawBoard();
     }
 
@@ -170,14 +176,16 @@ public class MainActivity extends AppCompatActivity {
          */
         @Override
         public void onClick(View view) {
-            BoardSquare square = (BoardSquare) view;
+            if (gamePlayable) {
+                BoardSquare square = (BoardSquare) view;
 
-            int col = square.getColumn();
-            int row = square.getRow();
+                int col = square.getColumn();
+                int row = square.getRow();
 
-            Log.v(TAG, String.format("Button at (%d, %d) clicked", col, row));
+                Log.v(TAG, String.format("Button at (%d, %d) clicked", col, row));
 
-            makeMove(square.getColumn(), square.getRow());
+                makeMove(square.getColumn(), square.getRow());
+            }
         }
     }
 }
