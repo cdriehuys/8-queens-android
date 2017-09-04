@@ -4,9 +4,9 @@ import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Point;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.Display;
 import android.view.View;
@@ -15,9 +15,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    private static final int DARK_SQUARE = Color.parseColor("#755000");
-    private static final int LIGHT_SQUARE = Color.parseColor("#edc674");
-
     private static final String TAG = MainActivity.class.getSimpleName();
 
     private BoardSquare[][] boardSquares;
@@ -96,12 +93,6 @@ public class MainActivity extends AppCompatActivity {
             for (int col = 0; col < Game.BOARD_SIZE; col++) {
                 BoardSquare square = new BoardSquare(getApplicationContext(), col, row);
                 square.setOnClickListener(new BoardSquareClickListener());
-
-                if ((row + col) % 2 == 0) {
-                    square.setBackgroundColor(DARK_SQUARE);
-                } else {
-                    square.setBackgroundColor(LIGHT_SQUARE);
-                }
 
                 GridLayout.LayoutParams cellParams = new GridLayout.LayoutParams();
                 cellParams.width = buttonSize;

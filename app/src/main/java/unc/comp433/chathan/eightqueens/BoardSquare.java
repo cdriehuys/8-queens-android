@@ -1,12 +1,16 @@
 package unc.comp433.chathan.eightqueens;
 
 import android.content.Context;
+import android.graphics.Color;
 
 
 /**
  * A class representing a single square on a chess board.
  */
 public class BoardSquare extends android.support.v7.widget.AppCompatImageButton {
+    private static final int DARK_SQUARE = Color.parseColor("#755000");
+    private static final int LIGHT_SQUARE = Color.parseColor("#edc674");
+
     private int column;
     private int row;
 
@@ -22,6 +26,12 @@ public class BoardSquare extends android.support.v7.widget.AppCompatImageButton 
 
         this.column = column;
         this.row = row;
+
+        if ((row + column) % 2 == 0) {
+            this.setBackgroundColor(DARK_SQUARE);
+        } else {
+            this.setBackgroundColor(LIGHT_SQUARE);
+        }
     }
 
     /**
