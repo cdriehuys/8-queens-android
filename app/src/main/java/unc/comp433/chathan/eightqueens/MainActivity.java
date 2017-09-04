@@ -33,19 +33,19 @@ public class MainActivity extends AppCompatActivity {
 
         for (int row = 0; row < 8; row++) {
             for (int col = 0; col < 8; col++) {
-                Button cell = new Button(getApplicationContext());
+                BoardSquare square = new BoardSquare(getApplicationContext(), col, row);
 
                 if ((row + col) % 2 == 0) {
-                    cell.setBackgroundColor(DARK_SQUARE);
+                    square.setBackgroundColor(DARK_SQUARE);
                 } else {
-                    cell.setBackgroundColor(LIGHT_SQUARE);
+                    square.setBackgroundColor(LIGHT_SQUARE);
                 }
 
                 GridLayout.LayoutParams cellParams = new GridLayout.LayoutParams();
                 cellParams.width = buttonSize;
                 cellParams.height = buttonSize;
 
-                board.addView(cell, cellParams);
+                board.addView(square, cellParams);
             }
         }
     }
