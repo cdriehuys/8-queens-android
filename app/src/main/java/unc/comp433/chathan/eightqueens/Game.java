@@ -36,6 +36,18 @@ public class Game {
     }
 
     /**
+     * Determine if there's a queen at the given location.
+     *
+     * @param col The column of the cell to check for a queen in.
+     * @param row The row of the cell to check for a queen in.
+     *
+     * @return True if there is a queen at the given location and false otherwise.
+     */
+    public boolean getQueenAt(int col, int row) {
+        return queens[col][row];
+    }
+
+    /**
      * Determine if the game has been won.
      *
      * @return True if the game is complete, false otherwise.
@@ -97,28 +109,28 @@ public class Game {
      */
     private Point getCollision(int col, int row) {
         // Up
-        for (int y = row - 1; row >= 0; y--) {
+        for (int y = row - 1; y >= 0; y--) {
             if (queens[col][y]) {
                 return new Point(col, y);
             }
         }
 
         // Down
-        for (int y = row + 1; row < BOARD_SIZE; y++) {
+        for (int y = row + 1; y < BOARD_SIZE; y++) {
             if (queens[col][y]) {
                 return new Point(col, y);
             }
         }
 
         // Left
-        for (int x = col - 1; col >= 0; x--) {
+        for (int x = col - 1; x >= 0; x--) {
             if (queens[x][row]) {
                 return new Point(x, row);
             }
         }
 
         // Right
-        for (int x = col + 1; col < BOARD_SIZE; x++) {
+        for (int x = col + 1; x < BOARD_SIZE; x++) {
             if (queens[x][row]) {
                 return new Point(x, row);
             }

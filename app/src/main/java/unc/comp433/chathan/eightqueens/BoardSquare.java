@@ -1,15 +1,12 @@
 package unc.comp433.chathan.eightqueens;
 
 import android.content.Context;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 
 
 /**
  * A class representing a single square on a chess board.
  */
-public class BoardSquare extends android.support.v7.widget.AppCompatButton implements Button.OnClickListener {
+public class BoardSquare extends android.support.v7.widget.AppCompatImageButton {
     private static final String TAG = BoardSquare.class.getSimpleName();
 
     private int column;
@@ -27,17 +24,32 @@ public class BoardSquare extends android.support.v7.widget.AppCompatButton imple
 
         this.column = column;
         this.row = row;
-
-        this.setOnClickListener(this);
     }
 
     /**
-     * Handle a click event for the square.
+     * Get the column the board is in.
      *
-     * @param view The view that was clicked.
+     * @return The index of the column the square is in.
      */
-    @Override
-    public void onClick(View view) {
-        Log.d(TAG, String.format("Square at (%d, %d) toggled", column, row));
+    public int getColumn() { return column; }
+
+    /**
+     * Get the row the board is in.
+     *
+     * @return The index of the row the square is in.
+     */
+    public int getRow() { return row; }
+
+    /**
+     * Set if the square has a queen in it.
+     *
+     * @param queenVisible A boolean indicating if a queen should be drawn in the square.
+     */
+    public void setQueenVisible(boolean queenVisible) {
+        if (queenVisible) {
+            setImageResource(R.drawable.ic_queen);
+        } else {
+            setImageResource(0);
+        }
     }
 }
