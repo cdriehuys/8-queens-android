@@ -53,7 +53,7 @@ class Game {
      *
      * @return True if the game is complete, false otherwise.
      */
-    public boolean isWon() {
+    boolean isWon() {
         int numQueens = 0;
         for (boolean[] row: queens) {
             for (boolean cell: row) {

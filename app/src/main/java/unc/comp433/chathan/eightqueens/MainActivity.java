@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.os.Bundle;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -91,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
 
         for (int row = 0; row < Game.BOARD_SIZE; row++) {
             for (int col = 0; col < Game.BOARD_SIZE; col++) {
-                BoardSquare square = new BoardSquare(getApplicationContext(), col, row);
+                BoardSquare square = new BoardSquare(this, col, row);
                 square.setOnClickListener(new BoardSquareClickListener());
 
                 GridLayout.LayoutParams cellParams = new GridLayout.LayoutParams();
@@ -126,7 +127,8 @@ public class MainActivity extends AppCompatActivity {
         // Render error messages in red and the default text in gray.
         if (errorMessage != null) {
             errorMessageTV.setText(errorMessage);
-            errorMessageTV.setTextColor(res.getColor(android.R.color.holo_red_dark));
+            errorMessageTV.setTextColor(
+                    ResourcesCompat.getColor(res, android.R.color.holo_red_dark, null));
         } else {
             errorMessageTV.setText(res.getString(R.string.no_message));
             errorMessageTV.setTextColor(Color.parseColor("#777777"));
